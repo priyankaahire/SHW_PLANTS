@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13d55acf9ef747fea00c059667bc10aa" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="PlantsDatabaseModel.BGDetail" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.DeliveryDetail" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.InstallationDetail" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.LDDdetail" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.PaymentDetail" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.ProjectMaster" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlantsDatabaseModel.UserMaster" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_BGDetails_ProjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_BGDetails_UserMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_DeliveryDetails_ProjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_DeliveryDetails_UserMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_InstallationDetails_ProjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_InstallationDetails_UserMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_LDDdetails_ProjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_LDDdetails_UserMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_PaymentDetails_ProjectMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="PlantsDatabaseModel.FK_PaymentDetails_UserMaster" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

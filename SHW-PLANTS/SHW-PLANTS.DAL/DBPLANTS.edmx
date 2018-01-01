@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PlantsDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BGDetails">
+          <Key>
+            <PropertyRef Name="BGId" />
+          </Key>
+          <Property Name="BGId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="BGStartDate" Type="date" Nullable="false" />
+          <Property Name="BGStartMail" Type="int" Nullable="false" />
+          <Property Name="BGStartRead" Type="int" Nullable="false" />
+          <Property Name="BGCompleted" Type="int" Nullable="false" />
+          <Property Name="BGEndDate" Type="date" Nullable="false" />
+          <Property Name="BGEndMail" Type="int" Nullable="false" />
+          <Property Name="BGEndRead" Type="int" Nullable="false" />
+          <Property Name="BGUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryDetails">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="DeliveryDate" Type="date" Nullable="false" />
+          <Property Name="DeliveryMail" Type="int" Nullable="false" />
+          <Property Name="DeliveryRead" Type="int" Nullable="false" />
+          <Property Name="DeliveryCompleted" Type="int" Nullable="false" />
+          <Property Name="DeliveryCompletedDate" Type="date" />
+          <Property Name="DeliveryUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InstallationDetails">
+          <Key>
+            <PropertyRef Name="InstallationId" />
+          </Key>
+          <Property Name="InstallationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="InstallationDate" Type="date" Nullable="false" />
+          <Property Name="InstallationMail" Type="int" Nullable="false" />
+          <Property Name="InstalllationRead" Type="int" Nullable="false" />
+          <Property Name="InstallationCompletedDate" Type="date" />
+          <Property Name="InstallationUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LDDdetails">
+          <Key>
+            <PropertyRef Name="LDId" />
+          </Key>
+          <Property Name="LDId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="LDDueDate" Type="date" Nullable="false" />
+          <Property Name="LDMail" Type="int" Nullable="false" />
+          <Property Name="LDRead" Type="int" Nullable="false" />
+          <Property Name="LDCompletedDate" Type="date" />
+          <Property Name="LDUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="date" Nullable="false" />
+          <Property Name="PaymentMail" Type="int" Nullable="false" />
+          <Property Name="PaymentRead" Type="int" Nullable="false" />
+          <Property Name="PaymentCompleted" Type="int" Nullable="false" />
+          <Property Name="PaymentCompletedDate" Type="date" />
+          <Property Name="PaymentUserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectMaster">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="CustomerName" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="PONumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PODate" Type="date" Nullable="false" />
+          <Property Name="ProjectStatus" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserEmailId" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNumber" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="UserLevel" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_BGDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="BGDetails" Type="Self.BGDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="BGDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BGDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="BGDetails" Type="Self.BGDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BGDetails">
+              <PropertyRef Name="BGUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="DeliveryUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstallationDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="InstallationDetails" Type="Self.InstallationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="InstallationDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstallationDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="InstallationDetails" Type="Self.InstallationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="InstallationDetails">
+              <PropertyRef Name="InstallationUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LDDdetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="LDDdetails" Type="Self.LDDdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="LDDdetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LDDdetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="LDDdetails" Type="Self.LDDdetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LDDdetails">
+              <PropertyRef Name="LDUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="PlantsDatabaseModelStoreContainer">
+          <EntitySet Name="BGDetails" EntityType="Self.BGDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryDetails" EntityType="Self.DeliveryDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InstallationDetails" EntityType="Self.InstallationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LDDdetails" EntityType="Self.LDDdetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectMaster" EntityType="Self.ProjectMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BGDetails_ProjectMaster" Association="Self.FK_BGDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="BGDetails" EntitySet="BGDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BGDetails_UserMaster" Association="Self.FK_BGDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="BGDetails" EntitySet="BGDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_ProjectMaster" Association="Self.FK_DeliveryDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_UserMaster" Association="Self.FK_DeliveryDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstallationDetails_ProjectMaster" Association="Self.FK_InstallationDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="InstallationDetails" EntitySet="InstallationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstallationDetails_UserMaster" Association="Self.FK_InstallationDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="InstallationDetails" EntitySet="InstallationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LDDdetails_ProjectMaster" Association="Self.FK_LDDdetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="LDDdetails" EntitySet="LDDdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LDDdetails_UserMaster" Association="Self.FK_LDDdetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="LDDdetails" EntitySet="LDDdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_ProjectMaster" Association="Self.FK_PaymentDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMaster" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_UserMaster" Association="Self.FK_PaymentDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlantsDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BGDetail">
+          <Key>
+            <PropertyRef Name="BGId" />
+          </Key>
+          <Property Name="BGId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="BGStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BGStartMail" Type="Int32" Nullable="false" />
+          <Property Name="BGStartRead" Type="Int32" Nullable="false" />
+          <Property Name="BGCompleted" Type="Int32" Nullable="false" />
+          <Property Name="BGEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BGEndMail" Type="Int32" Nullable="false" />
+          <Property Name="BGEndRead" Type="Int32" Nullable="false" />
+          <Property Name="BGUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_BGDetails_ProjectMaster" FromRole="BGDetails" ToRole="ProjectMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_BGDetails_UserMaster" FromRole="BGDetails" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="DeliveryDetail">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeliveryMail" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryRead" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryCompleted" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryCompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="DeliveryUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_DeliveryDetails_ProjectMaster" FromRole="DeliveryDetails" ToRole="ProjectMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_DeliveryDetails_UserMaster" FromRole="DeliveryDetails" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="InstallationDetail">
+          <Key>
+            <PropertyRef Name="InstallationId" />
+          </Key>
+          <Property Name="InstallationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="InstallationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="InstallationMail" Type="Int32" Nullable="false" />
+          <Property Name="InstalllationRead" Type="Int32" Nullable="false" />
+          <Property Name="InstallationCompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="InstallationUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_InstallationDetails_ProjectMaster" FromRole="InstallationDetails" ToRole="ProjectMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_InstallationDetails_UserMaster" FromRole="InstallationDetails" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="LDDdetail">
+          <Key>
+            <PropertyRef Name="LDId" />
+          </Key>
+          <Property Name="LDId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="LDDueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LDMail" Type="Int32" Nullable="false" />
+          <Property Name="LDRead" Type="Int32" Nullable="false" />
+          <Property Name="LDCompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="LDUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_LDDdetails_ProjectMaster" FromRole="LDDdetails" ToRole="ProjectMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_LDDdetails_UserMaster" FromRole="LDDdetails" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PaymentMail" Type="Int32" Nullable="false" />
+          <Property Name="PaymentRead" Type="Int32" Nullable="false" />
+          <Property Name="PaymentCompleted" Type="Int32" Nullable="false" />
+          <Property Name="PaymentCompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentUserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_PaymentDetails_ProjectMaster" FromRole="PaymentDetails" ToRole="ProjectMaster" />
+          <NavigationProperty Name="UserMaster" Relationship="Self.FK_PaymentDetails_UserMaster" FromRole="PaymentDetails" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="ProjectMaster">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PONumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PODate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProjectStatus" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BGDetails" Relationship="Self.FK_BGDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="BGDetails" />
+          <NavigationProperty Name="DeliveryDetails" Relationship="Self.FK_DeliveryDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="DeliveryDetails" />
+          <NavigationProperty Name="InstallationDetails" Relationship="Self.FK_InstallationDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="InstallationDetails" />
+          <NavigationProperty Name="LDDdetails" Relationship="Self.FK_LDDdetails_ProjectMaster" FromRole="ProjectMaster" ToRole="LDDdetails" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetails_ProjectMaster" FromRole="ProjectMaster" ToRole="PaymentDetails" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UserEmailId" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="UserLevel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="BGDetails" Relationship="Self.FK_BGDetails_UserMaster" FromRole="UserMaster" ToRole="BGDetails" />
+          <NavigationProperty Name="DeliveryDetails" Relationship="Self.FK_DeliveryDetails_UserMaster" FromRole="UserMaster" ToRole="DeliveryDetails" />
+          <NavigationProperty Name="InstallationDetails" Relationship="Self.FK_InstallationDetails_UserMaster" FromRole="UserMaster" ToRole="InstallationDetails" />
+          <NavigationProperty Name="LDDdetails" Relationship="Self.FK_LDDdetails_UserMaster" FromRole="UserMaster" ToRole="LDDdetails" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK_PaymentDetails_UserMaster" FromRole="UserMaster" ToRole="PaymentDetails" />
+        </EntityType>
+        <Association Name="FK_BGDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="BGDetails" Type="Self.BGDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="BGDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BGDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="BGDetails" Type="Self.BGDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="BGDetails">
+              <PropertyRef Name="BGUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeliveryDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="DeliveryDetails" Type="Self.DeliveryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="DeliveryDetails">
+              <PropertyRef Name="DeliveryUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstallationDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="InstallationDetails" Type="Self.InstallationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="InstallationDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InstallationDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="InstallationDetails" Type="Self.InstallationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="InstallationDetails">
+              <PropertyRef Name="InstallationUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LDDdetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="LDDdetails" Type="Self.LDDdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="LDDdetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LDDdetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="LDDdetails" Type="Self.LDDdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LDDdetails">
+              <PropertyRef Name="LDUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_ProjectMaster">
+          <End Role="ProjectMaster" Type="Self.ProjectMaster" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectMaster">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentDetails_UserMaster">
+          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="PaymentUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PlantsDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BGDetails" EntityType="Self.BGDetail" />
+          <EntitySet Name="DeliveryDetails" EntityType="Self.DeliveryDetail" />
+          <EntitySet Name="InstallationDetails" EntityType="Self.InstallationDetail" />
+          <EntitySet Name="LDDdetails" EntityType="Self.LDDdetail" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
+          <EntitySet Name="ProjectMasters" EntityType="Self.ProjectMaster" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
+          <AssociationSet Name="FK_BGDetails_ProjectMaster" Association="Self.FK_BGDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="BGDetails" EntitySet="BGDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BGDetails_UserMaster" Association="Self.FK_BGDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="BGDetails" EntitySet="BGDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_ProjectMaster" Association="Self.FK_DeliveryDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeliveryDetails_UserMaster" Association="Self.FK_DeliveryDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="DeliveryDetails" EntitySet="DeliveryDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstallationDetails_ProjectMaster" Association="Self.FK_InstallationDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="InstallationDetails" EntitySet="InstallationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InstallationDetails_UserMaster" Association="Self.FK_InstallationDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="InstallationDetails" EntitySet="InstallationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LDDdetails_ProjectMaster" Association="Self.FK_LDDdetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="LDDdetails" EntitySet="LDDdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LDDdetails_UserMaster" Association="Self.FK_LDDdetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="LDDdetails" EntitySet="LDDdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_ProjectMaster" Association="Self.FK_PaymentDetails_ProjectMaster">
+            <End Role="ProjectMaster" EntitySet="ProjectMasters" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentDetails_UserMaster" Association="Self.FK_PaymentDetails_UserMaster">
+            <End Role="UserMaster" EntitySet="UserMasters" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PlantsDatabaseModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PlantsDatabaseModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlantsDatabaseModelStoreContainer" CdmEntityContainer="PlantsDatabaseEntities">
+          <EntitySetMapping Name="BGDetails">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.BGDetail">
+              <MappingFragment StoreEntitySet="BGDetails">
+                <ScalarProperty Name="BGId" ColumnName="BGId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="BGStartDate" ColumnName="BGStartDate" />
+                <ScalarProperty Name="BGStartMail" ColumnName="BGStartMail" />
+                <ScalarProperty Name="BGStartRead" ColumnName="BGStartRead" />
+                <ScalarProperty Name="BGCompleted" ColumnName="BGCompleted" />
+                <ScalarProperty Name="BGEndDate" ColumnName="BGEndDate" />
+                <ScalarProperty Name="BGEndMail" ColumnName="BGEndMail" />
+                <ScalarProperty Name="BGEndRead" ColumnName="BGEndRead" />
+                <ScalarProperty Name="BGUserId" ColumnName="BGUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryDetails">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.DeliveryDetail">
+              <MappingFragment StoreEntitySet="DeliveryDetails">
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DeliveryMail" ColumnName="DeliveryMail" />
+                <ScalarProperty Name="DeliveryRead" ColumnName="DeliveryRead" />
+                <ScalarProperty Name="DeliveryCompleted" ColumnName="DeliveryCompleted" />
+                <ScalarProperty Name="DeliveryCompletedDate" ColumnName="DeliveryCompletedDate" />
+                <ScalarProperty Name="DeliveryUserId" ColumnName="DeliveryUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InstallationDetails">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.InstallationDetail">
+              <MappingFragment StoreEntitySet="InstallationDetails">
+                <ScalarProperty Name="InstallationId" ColumnName="InstallationId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+                <ScalarProperty Name="InstallationMail" ColumnName="InstallationMail" />
+                <ScalarProperty Name="InstalllationRead" ColumnName="InstalllationRead" />
+                <ScalarProperty Name="InstallationCompletedDate" ColumnName="InstallationCompletedDate" />
+                <ScalarProperty Name="InstallationUserId" ColumnName="InstallationUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LDDdetails">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.LDDdetail">
+              <MappingFragment StoreEntitySet="LDDdetails">
+                <ScalarProperty Name="LDId" ColumnName="LDId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="LDDueDate" ColumnName="LDDueDate" />
+                <ScalarProperty Name="LDMail" ColumnName="LDMail" />
+                <ScalarProperty Name="LDRead" ColumnName="LDRead" />
+                <ScalarProperty Name="LDCompletedDate" ColumnName="LDCompletedDate" />
+                <ScalarProperty Name="LDUserId" ColumnName="LDUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentMail" ColumnName="PaymentMail" />
+                <ScalarProperty Name="PaymentRead" ColumnName="PaymentRead" />
+                <ScalarProperty Name="PaymentCompleted" ColumnName="PaymentCompleted" />
+                <ScalarProperty Name="PaymentCompletedDate" ColumnName="PaymentCompletedDate" />
+                <ScalarProperty Name="PaymentUserId" ColumnName="PaymentUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectMasters">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.ProjectMaster">
+              <MappingFragment StoreEntitySet="ProjectMaster">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="PONumber" ColumnName="PONumber" />
+                <ScalarProperty Name="PODate" ColumnName="PODate" />
+                <ScalarProperty Name="ProjectStatus" ColumnName="ProjectStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="PlantsDatabaseModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserEmailId" ColumnName="UserEmailId" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PlantsDatabaseModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PlantsDatabaseModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PlantsDatabaseModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PlantsDatabaseModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PlantsDatabaseModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PlantsDatabaseModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PlantsDatabaseModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PlantsDatabaseModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PlantsDatabaseModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
