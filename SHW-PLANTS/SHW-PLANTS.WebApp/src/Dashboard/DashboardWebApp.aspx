@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="BGDetailsWebApp.aspx">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -64,7 +64,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="DeliveryWebApp.aspx">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="InstallationWebApp.aspx">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="PaymentDetailWebApp.aspx">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

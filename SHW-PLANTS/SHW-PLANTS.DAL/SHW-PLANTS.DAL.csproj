@@ -106,6 +106,7 @@
     <Compile Include="BGDetail.cs">
       <DependentUpon>DBPLANTS.tt</DependentUpon>
     </Compile>
+    <Compile Include="BgdetailsDAC.cs" />
     <Compile Include="DBPLANTS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,6 +122,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBPLANTS.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DeliveryDAC.cs" />
     <Compile Include="DeliveryDetail.cs">
       <DependentUpon>DBPLANTS.tt</DependentUpon>
     </Compile>
@@ -130,6 +132,8 @@
     <Compile Include="LDDdetail.cs">
       <DependentUpon>DBPLANTS.tt</DependentUpon>
     </Compile>
+    <Compile Include="LDdetailsDAC.cs" />
+    <Compile Include="PaymentDAC.cs" />
     <Compile Include="PaymentDetail.cs">
       <DependentUpon>DBPLANTS.tt</DependentUpon>
     </Compile>
@@ -144,6 +148,7 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>DBPLANTS.tt</DependentUpon>
     </Compile>
+    <Compile Include="installationDAC.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>DBPLANTS.tt</DependentUpon>
     </Compile>

@@ -21,6 +21,7 @@ namespace SHW_PLANTS.DAL
         public int LDRead { get; set; }
         public Nullable<System.DateTime> LDCompletedDate { get; set; }
         public int LDUserId { get; set; }
+        public int LDComplited { get; set; }
     
         public virtual ProjectMaster ProjectMaster { get; set; }
         public virtual UserMaster UserMaster { get; set; }

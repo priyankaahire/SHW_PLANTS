@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="BGDetailsWebApp.aspx.cs" Inherits="SHW_PLANTS.WebApp.src.Dashboard.BGDetailsWebApp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script src="dashboard.js"></script>
+    <script src="BGDetail.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
      <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 
-                <h1 class="page-header">LD Details</h1>
+                <h1 class="page-header">BG Details</h1>
             </div>
         </div>
         <div class="container" style="width: 100%">
@@ -36,11 +36,12 @@
                     <tr>
                         <th>No</th>
                         <th>Project Name</th>
-                        <th>LD Due Date</th>
-                        <th>LD Read</th>
-                        <th>LD Complicated Date</th>
+                        <th>Customer Name</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
                         <th>Username</th>
-                        <th width="200px">Action</th>
+                        <th>Read</th>
+                        <th>Completed</th>
                     </tr>
                 </thead>
                 <tbody id="tbody">

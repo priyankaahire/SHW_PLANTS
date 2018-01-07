@@ -23,7 +23,7 @@ namespace SHW_PLANTS.DAL
                 List<UserMasterCLS> userMaster = new List<UserMasterCLS>();
                 using (var db = new PlantsDatabaseEntities())
                 {
-                    userMaster = (from d in db.UserMasters
+                    userMaster = ( from d in db.UserMasters
                                   select new UserMasterCLS
                                   {
                                       UserId = d.UserId,

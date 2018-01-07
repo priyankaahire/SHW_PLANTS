@@ -1,13 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LDDetailsWebApp.aspx.cs" Inherits="SHW_PLANTS.WebApp.src.Dashboard.LDDetailsWebApp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PaymentDetailWebApp.aspx.cs" Inherits="SHW_PLANTS.WebApp.src.Dashboard.PaymentDetailWebApp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script src="LDDetail.js"></script>
+    <script src="payment.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-     <div id="page-wrapper">
+  <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 
-                <h1 class="page-header">LD Details</h1>
+                <h1 class="page-header">BG Details</h1>
             </div>
         </div>
         <div class="container" style="width: 100%">

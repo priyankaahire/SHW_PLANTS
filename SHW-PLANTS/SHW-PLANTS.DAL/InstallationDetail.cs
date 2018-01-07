@@ -21,6 +21,7 @@ namespace SHW_PLANTS.DAL
         public int InstalllationRead { get; set; }
         public Nullable<System.DateTime> InstallationCompletedDate { get; set; }
         public int InstallationUserId { get; set; }
+        public int InstallationCompleted { get; set; }
     
         public virtual ProjectMaster ProjectMaster { get; set; }
         public virtual UserMaster UserMaster { get; set; }

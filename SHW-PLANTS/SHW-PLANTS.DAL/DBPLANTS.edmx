@@ -44,6 +44,7 @@
           <Property Name="InstalllationRead" Type="int" Nullable="false" />
           <Property Name="InstallationCompletedDate" Type="date" />
           <Property Name="InstallationUserId" Type="int" Nullable="false" />
+          <Property Name="InstallationCompleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="LDDdetails">
           <Key>
@@ -56,6 +57,7 @@
           <Property Name="LDRead" Type="int" Nullable="false" />
           <Property Name="LDCompletedDate" Type="date" />
           <Property Name="LDUserId" Type="int" Nullable="false" />
+          <Property Name="LDComplited" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PaymentDetails">
           <Key>
@@ -352,6 +354,7 @@
           <Property Name="InstallationUserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_InstallationDetails_ProjectMaster" FromRole="InstallationDetails" ToRole="ProjectMaster" />
           <NavigationProperty Name="UserMaster" Relationship="Self.FK_InstallationDetails_UserMaster" FromRole="InstallationDetails" ToRole="UserMaster" />
+          <Property Name="InstallationCompleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="LDDdetail">
           <Key>
@@ -366,6 +369,7 @@
           <Property Name="LDUserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProjectMaster" Relationship="Self.FK_LDDdetails_ProjectMaster" FromRole="LDDdetails" ToRole="ProjectMaster" />
           <NavigationProperty Name="UserMaster" Relationship="Self.FK_LDDdetails_UserMaster" FromRole="LDDdetails" ToRole="UserMaster" />
+          <Property Name="LDComplited" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -674,6 +678,7 @@
           <EntitySetMapping Name="InstallationDetails">
             <EntityTypeMapping TypeName="PlantsDatabaseModel.InstallationDetail">
               <MappingFragment StoreEntitySet="InstallationDetails">
+                <ScalarProperty Name="InstallationCompleted" ColumnName="InstallationCompleted" />
                 <ScalarProperty Name="InstallationId" ColumnName="InstallationId" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
                 <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
@@ -687,6 +692,7 @@
           <EntitySetMapping Name="LDDdetails">
             <EntityTypeMapping TypeName="PlantsDatabaseModel.LDDdetail">
               <MappingFragment StoreEntitySet="LDDdetails">
+                <ScalarProperty Name="LDComplited" ColumnName="LDComplited" />
                 <ScalarProperty Name="LDId" ColumnName="LDId" />
                 <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
                 <ScalarProperty Name="LDDueDate" ColumnName="LDDueDate" />

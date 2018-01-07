@@ -239,10 +239,18 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="src\Dashboard\BGDetail.js" />
     <Content Include="src\Dashboard\BGDetailsWebApp.aspx" />
     <Content Include="src\Dashboard\dashboard.js" />
     <Content Include="src\Dashboard\DashboardWebApp.aspx" />
+    <Content Include="src\Dashboard\Delivery.js" />
+    <Content Include="src\Dashboard\DeliveryWebApp.aspx" />
+    <Content Include="src\Dashboard\Installation.js" />
+    <Content Include="src\Dashboard\InstallationWebApp.aspx" />
+    <Content Include="src\Dashboard\LDDetail.js" />
     <Content Include="src\Dashboard\LDDetailsWebApp.aspx" />
+    <Content Include="src\Dashboard\Payment.js" />
+    <Content Include="src\Dashboard\PaymentDetailWebApp.aspx" />
     <Content Include="src\Projects\project.js" />
     <Content Include="src\Projects\ProjectMasterWebApp.aspx" />
     <Content Include="src\Users\user.js" />
@@ -313,12 +321,33 @@
     <Compile Include="src\Dashboard\DashboardWebApp.aspx.designer.cs">
       <DependentUpon>DashboardWebApp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="src\Dashboard\DeliveryWebApp.aspx.cs">
+      <DependentUpon>DeliveryWebApp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\Dashboard\DeliveryWebApp.aspx.designer.cs">
+      <DependentUpon>DeliveryWebApp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Dashboard\InstallationWebApp.aspx.cs">
+      <DependentUpon>InstallationWebApp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\Dashboard\InstallationWebApp.aspx.designer.cs">
+      <DependentUpon>InstallationWebApp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="src\Dashboard\LDDetailsWebApp.aspx.cs">
       <DependentUpon>LDDetailsWebApp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="src\Dashboard\LDDetailsWebApp.aspx.designer.cs">
       <DependentUpon>LDDetailsWebApp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Dashboard\PaymentDetailWebApp.aspx.cs">
+      <DependentUpon>PaymentDetailWebApp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\Dashboard\PaymentDetailWebApp.aspx.designer.cs">
+      <DependentUpon>PaymentDetailWebApp.aspx</DependentUpon>
     </Compile>
     <Compile Include="src\Projects\ProjectMasterWebApp.aspx.cs">
       <DependentUpon>ProjectMasterWebApp.aspx</DependentUpon>

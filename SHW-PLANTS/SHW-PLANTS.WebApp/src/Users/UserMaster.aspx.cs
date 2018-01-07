@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-//using System.Web.Http;
-using System.Web.Services;
-//using System.Web.Script.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using SHW_PLANTS.BAL;
 using SHW_PLANTS.DAL;
-using SHW_PLANTS.BAL;
-using Newtonsoft.Json;
-using System.Web;
+using System;
+using System.Collections.Generic;
+using System.Web.Services;
 
 namespace SHW_PLANTS.WebApp.src.Users
 {
@@ -21,7 +14,6 @@ namespace SHW_PLANTS.WebApp.src.Users
 
         }
         [WebMethod]
-
         public static List<UserMasterCLS> GetAllUsers()
         {
             List<UserMasterCLS> dbuserMaster = new List<UserMasterCLS>();

@@ -1,4 +1,4 @@
-// JavaScript source code
+﻿// JavaScript source code
 
 $(document).ready(function () {
     var page = 1;
@@ -9,24 +9,11 @@ $(document).ready(function () {
     function getLDDetails() {
 
         $.ajax({
-            url: 'dashboard.json',
-            dataType: 'json',
-            data: { page: page },
+            type: "POST",
+            url: 'LDDetailsWebApp.aspx/GetLDDetail',
+            contentType: "application/json; charset=utf-8",
             success: function (data) {
-                $('#pagination').twbsPagination({
-                    totalPages: total_page,
-                    visiblePages: current_page,
-                    itemOnPage: 3,
-                    onPageClick: function (event, page) {
-                        page = page;
-                        if (is_ajax_fire != 0) {
-                            getPageData(data);
-                            current_page++;
-                        }
-                    }
-                });
-                displayLDDetails(data);
-                is_ajax_fire = 1;
+                displayLDDetails(data.d);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Status: " + textStatus); alert("Error: " + errorThrown);
@@ -47,20 +34,20 @@ $(document).ready(function () {
         var rows = '';
         $.each(data, function (key, value) {
             rows = rows + '<tr>';
-            rows = rows + '<td>' + value.LDId + '</td>';
+            rows = rows + '<td>' + value.LD_ID + '</td>';
             rows = rows + '<td>' + value.ProjectName + '</td>';
-            rows = rows + '<td>' + value.LDDueDate + '</td>';
-            rows = rows + '<td>' + value.Username + '</td>';
             rows = rows + '<td>' + value.CustomerName + '</td>';
-            rows = rows + '<td data-id="' + value.LDId + '">';
+            rows = rows + '<td>' + value.Duedate + '</td>';
+            rows = rows + '<td>' + value.UserName + '</td>';
+            rows = rows + '<td data-id="' + value.Read + '">';
             rows = rows + '<input type="checkbox"  data-toggle="toggle">';
             rows = rows + '</td>';
-            rows = rows + '<td data-id="' + value.LDId + '">';
+            rows = rows + '<td data-id="' + value.Complited + '">';
             rows = rows + '<input type="checkbox"  data-toggle="toggle">';
             rows = rows + '</td>';
             rows = rows + '</tr>';
         });
         $("#tbody").append(rows);
     }
-    
+
 });
