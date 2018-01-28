@@ -35,3 +35,6 @@ textarea {
 .panel-yellow {
     border-color: #428bca;
 }
+.project_form label {
+    font-size: 12px !important;
+}

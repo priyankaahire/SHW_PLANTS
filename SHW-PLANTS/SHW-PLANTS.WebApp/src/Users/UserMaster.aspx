@@ -119,7 +119,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input value="Submit" id="usercreateBtn" type="button" class="btn crud-submit btn-success" />
+                                    <input value="Submit" id="usersubmitBtn" type="button" class="btn crud-submit btn-success" />
                                 </div>
 
 

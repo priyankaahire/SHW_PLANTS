@@ -82,7 +82,7 @@ $(document).ready(function () {
     }
     /* Create New User*/
     $(document).ready(function (e) {
-        $('#usercreateBtn').click(function (e) {
+        $('#usersubmitBtn').click(function (e) {
             createUser();
         });
     });

@@ -12,24 +12,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: { page: page },
             success: function (data) {
-                alert("in sucess");
                 // var total_page = Math.ceil(data.length / 3);
-
-                var total_page = Math.ceil(5);
-                var current_page = page;
-
-                $('#pagination').twbsPagination({
-                    totalPages: total_page,
-                    visiblePages: current_page,
-                    itemOnPage: 3,
-                    onPageClick: function (event, page) {
-                        page = page;
-                        if (is_ajax_fire != 0) {
-                            getPageData(data);
-                            current_page++;
-                        }
-                    }
-                });
                 displayProjectList(data);
                 is_ajax_fire = 1;
             },
@@ -38,6 +21,48 @@ $(document).ready(function () {
             }
         });
     }
+
+    $(document).ready(function () {
+
+        var counter = 2;
+
+        $("#addButton").click(function () {
+
+            if (counter >= 5) {
+                alert("Only 5 payments are allow");
+                return false;
+            }
+
+            var newTextBoxDiv = $(document.createElement('div'))
+                .attr("id", 'TextBoxDiv' + counter);
+
+            newTextBoxDiv.after().html('<label>Payment Date' + counter + ' : </label>' +
+                '<input type="text" name="paymentdate' + counter +
+                '" id="paymentdate' + counter + '" value="" >');
+
+            newTextBoxDiv.appendTo("#TextBoxesGroup");
+            counter++;
+        });
+
+        $("#removeButton").click(function () {
+            if (counter == 1) {
+                alert("No more textbox to remove");
+                return false;
+            }
+
+            counter--;
+            $("#TextBoxDiv" + counter).remove();
+
+        });
+
+        $("#getButtonValue").click(function () {
+            var msg = '';
+            for (i = 1; i < counter; i++) {
+                msg += "\n Textbox #" + i + " : " + $('#paymentdate' + i).val();
+            }
+            alert(msg);
+        });
+    });
 
 
     /* Get Page Data*/
@@ -69,25 +94,70 @@ $(document).ready(function () {
         });
         $("#tbody").append(rows);
     }
-
+   
     /* Create New Project*/
     $(document).ready(function (e) {
-        $('#usercreateBtn').click(function (e) {
+        $('#projectcreateBtn').click(function (e) {
+           // location.href = "BGDetailsWebApp.aspx/GetBGDetail";
+        });
+    });
+    /* Date Picker*/
+    $(function () {
+        $("#user_date").datepicker();
+    });
+    $(function () {
+        $("#ld_date").datepicker();
+    });
+    $(function () {
+        $("#bg_start_date").datepicker();
+    });
+    $(function () {
+        $("#bg_end_date").datepicker();
+    });
+    $(function () {
+        $("#delivery_date").datepicker();
+    });
+    $(function () {
+        $("#inst_date").datepicker();
+    });
+    $(function () {
+        $("#paymentdate").datepicker();
+    });
+    /*  submit user */
+    /* Create New User*/
+    $(document).ready(function (e) {
+        $('#projectsubmitBtn').click(function (e) {
             createProject();
         });
     });
     function createProject() {
-        var uname = $('#username').val();
-        var email = $('#emailid').val();
-        var contact = $('#contactno').val();
+        var cname = $('#cname').val();
+        var uname = $('#uname').val();
+        var emailid = $('#emailid').val();
+        var mobile = $('#mobileid').val();
+        var ld_date = $('#ld_date').val();
+        var ld_radio = $("input[name='ld_applicable']:checked").val();
+        var ld_user = $('#ld_user').val();
+        var bg_user = $('#bg_user').val();
+        var bg_start_date = $('#bg_start_date').val();
+        var bg_end_date = $('#bg_end_date').val();
+        var bg_radio = $("input[name='bg_applicable']:checked").val();
+
+        var da_radio = $("input[name='da_applicable']:checked").val();
+        var da_user = $('#da_user').val();
+        var delivery_date = $('#delivery_date').val();
+        var inst_radio = $("input[name='inst_applicable']:checked").val();
+        var inst_user = $('#inst_user').val();
+        var inst_date = $('#inst_date').val();
+
         $.ajax({
-            url: 'usrs.json',
-            dataType: 'json',
-            type: 'POST',
-            data: { username: uname, emailid: email, contactno: contact },
+            type: "POST",
+            url: 'ProjectCreateWebApp.aspx/AddProject',
+            contentType: "application/json; charset=utf-8",
+          //  data: "{ 'UserId': '0', 'UserName': '" + uname + "', 'UserEmailId': '" + email + "', 'ContactNumber': '" + contact + "'}",
             success: function (data) {
                 $(".modal").modal('hide');
-                toastr.success('User Created Successfully.', 'Success Alert', { timeOut: 5000 });
+                //  toastr.success('User Created Successfully.', 'Success Alert', { timeOut: 5000 });
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Status: " + textStatus); alert("Error: " + errorThrown);
@@ -106,4 +176,5 @@ $(document).ready(function () {
         $("#edit-item").find("textarea[name='description']").val(description);
         $("#edit-item").find(".edit-id").val(id);
     });
+
 });

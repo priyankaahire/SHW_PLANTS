@@ -252,7 +252,9 @@
     <Content Include="src\Dashboard\Payment.js" />
     <Content Include="src\Dashboard\PaymentDetailWebApp.aspx" />
     <Content Include="src\Projects\project.js" />
+    <Content Include="src\Projects\ProjectCreateWebApp.aspx" />
     <Content Include="src\Projects\ProjectMasterWebApp.aspx" />
+    <Content Include="src\Projects\WebForm1.aspx" />
     <Content Include="src\Users\user.js" />
     <Content Include="src\Users\UserMaster.aspx" />
     <Content Include="User Control\Footer.ascx" />
@@ -349,12 +351,26 @@
     <Compile Include="src\Dashboard\PaymentDetailWebApp.aspx.designer.cs">
       <DependentUpon>PaymentDetailWebApp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="src\Projects\ProjectCreateWebApp.aspx.cs">
+      <DependentUpon>ProjectCreateWebApp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\Projects\ProjectCreateWebApp.aspx.designer.cs">
+      <DependentUpon>ProjectCreateWebApp.aspx</DependentUpon>
+    </Compile>
     <Compile Include="src\Projects\ProjectMasterWebApp.aspx.cs">
       <DependentUpon>ProjectMasterWebApp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="src\Projects\ProjectMasterWebApp.aspx.designer.cs">
       <DependentUpon>ProjectMasterWebApp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="src\Projects\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="src\Projects\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="src\Users\UserMaster.aspx.cs">
       <DependentUpon>UserMaster.aspx</DependentUpon>
